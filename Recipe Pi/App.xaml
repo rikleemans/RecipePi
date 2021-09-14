@@ -1,0 +1,27 @@
+﻿<Application x:Class="Recipe_Pi.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Recipe_Pi"
+             xmlns:viewmodels="clr-namespace:Recipe_Pi.ViewModels"
+             xmlns:views="clr-namespace:Recipe_Pi.Views.Navigation"
+             StartupUri="Views/LoginViewer.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewmodels:FridgeViewModel}">
+                <views:Fridge/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:FavoritesViewModel}">
+                <views:Favorites/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:RecipesViewModel}">
+                <views:Recipes/>
+            </DataTemplate>
+        </ResourceDictionary>
+        </Application.Resources>
+    </Application>

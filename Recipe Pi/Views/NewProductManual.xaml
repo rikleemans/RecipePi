@@ -1,0 +1,36 @@
+﻿<Window x:Class="Recipe_Pi.NewProductManual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recipe_Pi"
+        mc:Ignorable="d"
+        Title="Product handmatig toevoegen" Height="250" Width="400">
+    <Grid Background="#FF2C2F33">        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+       
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <TextBlock x:Name="lblProductName" Text="Naam *" FontFamily="Segoe Print" HorizontalAlignment="Left" Height="25"   FontSize="15" Foreground="White"/>
+            <TextBlock x:Name="lblProductCount" Text="Aantal *" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="0, 10, 0, 0" Height="25"  FontSize="15" Foreground="White"/>
+            <TextBlock x:Name="lblProductDate" Text="Datum" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="0, 10, 0, 0" Height="25"  FontSize="15" Foreground="White"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <TextBox x:Name="tbProductName"  FontFamily="RuneScape UF" Width="146" Height="25" FontSize="18"  Text="" Foreground="White"/>
+            <TextBox x:Name="tbProductCount"  FontFamily="RuneScape UF" Width="146" Height="25" FontSize="18"  Text="" Foreground="White"  Margin="0, 10, 0, 0"/>
+            <DatePicker x:Name="dpProductDate"  FontFamily="RuneScape UF" Width="146" Height="25" FontSize="18"  Text="" Foreground="White"  Margin="0, 10, 0, 0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="1" Margin="0,15,0,0">
+            <Button x:Name="btnAdd" Content="Toevoegen" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="RuneScape UF" FontSize="18" Width="146" Height="27"  Background="#FF283E91" BorderBrush="#FF1A2446" Click="btnAdd_Click" />
+            <Button x:Name="btnBack" Content="Terug" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,0,0" FontFamily="RuneScape UF" FontSize="18" Width="146" Height="27"  Background="#FF283E91" BorderBrush="#FF1A2446" Click="btnBack_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>

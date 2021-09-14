@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Recipe_Pi.Views.Navigation.Fridge"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recipe_Pi.Views.Navigation"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="622">
+    <UserControl.Resources>
+        <Style x:Key="DGRIsExpired" TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsExpired}" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <StackPanel Margin="10">
+            <Label Content="Koelkast:" Width="130" Height="30" FontFamily="Segoe Print" Foreground="#DDFFFFFF"></Label>
+            <DataGrid x:Name="dgProduct"  ItemsSource="{Binding ShowFridgeProduct, UpdateSourceTrigger=PropertyChanged}" 
+                      Height="200" Width="500" AutoGenerateColumns="False" CanUserAddRows="False" Background="White"
+                      RowStyle="{StaticResource DGRIsExpired}" 
+                                  > 
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Productnaam" IsReadOnly="True" Binding="{Binding ProductName}"/>
+                    <DataGridTextColumn Header="Aantal" Binding="{Binding ProductCount}"/>
+                    <DataGridTextColumn Header="Vervaldatum" Binding="{Binding ExpireDate}"/>
+                    <DataGridTemplateColumn Header="Acties">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="3">
+                                    <Image x:Name="imgDelete" Source="/Resources/delete-icon.png" Height="20" Width="30" MouseLeftButtonDown="imgDelete_MouseLeftButtonDown"  ></Image>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnAddIngredient" Content="Toevoegen" Background="#FF283E91" BorderBrush="#FF1A2446" FontFamily="RuneScape UF" VerticalAlignment="Center" Width="100" Height="30" FontSize="13" Margin="0, 13, 0, 0" Click="btnAddIngredient_Click" Foreground="#DDFFFFFF"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

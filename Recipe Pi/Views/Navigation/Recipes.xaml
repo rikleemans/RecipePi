@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Recipe_Pi.Views.Navigation.Recipes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recipe_Pi.Views.Navigation"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="622">
+    <UserControl.Resources>
+        <Style x:Key="DGRIsExpired" TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsExpired}" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10">
+            <Label Content="Gerechten:" Width="100" Height="30" FontFamily="Segoe Print" Foreground="#DDFFFFFF"></Label>
+            <DataGrid x:Name="dgRecipe" Width="166" Height="200" ItemsSource="{Binding RecipeModels, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Recept" IsReadOnly="True" Binding="{Binding RecipeName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnNewFavorite" Content="Favoriet" FontFamily="RuneScape UF" VerticalAlignment="Center" Width="100" Height="30" FontSize="13" Margin="0, 13, 0, 0" Background="#FF283E91" BorderBrush="#FF1A2446"  Foreground="#DDFFFFFF" Click="btnNewFavorite_Click" ></Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Label Content="Gerecht:" Width="60" Height="30" FontFamily="Segoe Print" Foreground="#DDFFFFFF"></Label>
+                <Label Content="{Binding SelectedRecipe, UpdateSourceTrigger=PropertyChanged}" Width="150" Height="30" FontFamily="Segoe Print" Foreground="#DDFFFFFF"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <DataGrid x:Name="dgRecipeIngredient" Height="200" Width="333" 
+                                  ItemsSource="{Binding ShowFridgeProduct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                  AutoGenerateColumns="False" CanUserAddRows="False" Background="White"
+                                  RowStyle="{StaticResource DGRIsExpired}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ingrediënt" IsReadOnly="True" Binding="{Binding ProductName}"/>
+                        <DataGridTextColumn Header="Aantal" IsReadOnly="True" Binding="{Binding ProductCount}"/>
+                        <DataGridTextColumn Header="Vervaldatum" IsReadOnly="True" Binding="{Binding ExpireDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

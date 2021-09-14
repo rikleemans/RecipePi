@@ -1,0 +1,20 @@
+﻿<Window x:Class="Recipe_Pi.Views.Purchases"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recipe_Pi.Views"
+        mc:Ignorable="d"
+        Title="Purchases" Height="410" Width="450">
+    <Grid Background="#2C2F33">
+            <DataGrid x:Name="dgPurchase" Width="350" Height="280" ItemsSource="{Binding Purchase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+              <DataGrid.Columns>
+                    <DataGridTextColumn Header="Productnaam" IsReadOnly="True" Binding="{Binding ProductName}"/>
+                    <DataGridTextColumn Header="Aantal" IsReadOnly="True" Binding="{Binding ProductCount}"/>
+                    <DataGridTextColumn Header="Datum" IsReadOnly="True" Binding="{Binding PurchaseDate}"/>
+              </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnBack" Click="btnBack_Click" Content="Terug" VerticalAlignment="Bottom" Width="146" Height="27" Background="#FF283E91" BorderBrush="#FF1A2446"  Foreground="#DDFFFFFF"></Button>
+
+    </Grid>
+</Window>
